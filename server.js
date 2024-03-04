@@ -7,12 +7,12 @@ const port = 8003;
 app.set("view engine", "ejs");
 
 // Home page
-app.get("/", (req, res) =>{
-  res.render("Homepage");
+app.get("/", (req, res) => {
+    res.render("product_1_view");
 });
 app.use(express.static('views'));
 
 
 app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+    console.log(`Server is listening on port ${port}`);
 });

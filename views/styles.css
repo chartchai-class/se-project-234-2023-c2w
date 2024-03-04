@@ -1,6 +1,8 @@
 #nav {
-  align-content: right;
+    align-content: right;
 }
+
+
 /* .navbar-brand {
   color: #40a2e3;
   font-style: italic;
@@ -8,156 +10,173 @@
 } */
 
 body {
-  background-color: #FFF6E9;
+    background-color: #FFF6E9;
 }
 
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .search {
-  --padding: 14px;
-  width: auto;
-  height: 100%;
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  padding: var(--padding);
-  border-radius: 8px;
-  background-color: white;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
-  transition: box-shadow 0.25s;
+    --padding: 14px;
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    padding: var(--padding);
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.25s;
 }
 
 .search:focus-within {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .search-input {
-  font-size: 16px;
-  font-family: 'Inter';
-  color: #333333;
-  margin-left: var(--padding);
-  outline: none;
-  border: none;
-  background: transparent;
-  width: auto;
+    font-size: 16px;
+    font-family: 'Inter';
+    color: #333333;
+    margin-left: var(--padding);
+    outline: none;
+    border: none;
+    background: transparent;
+    width: auto;
 }
 
-.search-input::placeholder, .search-icon {
-  color: #0D9276;
+.search-input::placeholder,
+.search-icon {
+    color: #0D9276;
 }
 
 .carousel-item {
-  padding: 25px;
+    padding: 25px;
 }
 
 .newArrival {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 
 .bestSeller {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
 }
 
 .gallery {
-  width: 900px;
-  display: flex;
-  overflow-x: scroll;
+    width: 900px;
+    display: flex;
+    overflow-x: scroll;
 }
 
 .gallery div {
-  width: 100%;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 20px;
-  padding: 10px;
-  flex: none
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 20px;
+    padding: 10px;
+    flex: none
 }
 
 .gallery div img {
-  width: 100%;
-  transition: transform 0.5s;
+    width: 100%;
+    transition: transform 0.5s;
 }
 
 .gallery::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .gallery-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10% auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10% auto;
 }
 
-#backBtn, #nextBtn {
-  width: 50px;
-  cursor: pointer;
-  margin: 40px;
+#backBtn,
+#nextBtn {
+    width: 50px;
+    cursor: pointer;
+    margin: 40px;
 }
 
 .gallery div img:hover {
-  cursor: pointer;
-  transform: scale(1.1);
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 img {
-  border-radius: 20px;
+    border-radius: 20px;
 }
 
 h5 {
-  font-family: 'Inter';
-  align-items: center;
-  justify-items: center;
+    font-family: 'Inter';
+    align-items: center;
+    justify-items: center;
 }
-#product1 {
-  text-align: center;
-  
-}
-.product-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 20px;
-  padding: 20px;
-}
-#product1 .product_pro {
-  /* width: 23%;
-  min-width: 250px;
-  padding: 10px 12px;
-  border: 1px solid #cce7d0;
-  border-radius: 20px;
-  cursor: pointer;
-  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
 
-  margin-left: 25px; Adjust this value to increase or decrease the space */
-  width: calc(25% - 40px); /* Adjust width for spacing */
-  margin-bottom: 20px;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  /* padding: 16px; */
-  text-align: center;
+#product1 {
+    text-align: center;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 20px;
+}
+
+
+/* Product view section */
+
+#product1 .product-container {
+    /* list of product */
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+#product1 .product_pro {
+    width: calc(25% - 80px);
+    /* Adjust width for spacing */
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* padding: 16px; */
+    text-align: center;
+    transition: 0.2s ease;
 }
 
 #product1 .product_pro img {
-  width: 100%;
-  border-radius: 20px;
+    width: 100%;
 }
-#product1 .product_pro .des{
-  background-color: #BBE2EC; /* This sets the background color */
-  /* padding: 8px; /* Add padding if needed */
-  /* border-radius: 4px; Optional, if you want rounded corners */ 
+
+#product1 .product_pro .des {
+    text-align: start;
+    padding: 10px 0;
+    background-color: #BBE2EC;
+    /* border-radius: 10px; */
+    /* This sets the background color */
+    /* padding: 8px; /* Add padding if needed */
+    /* b
+    order-radius: 4px; Optional, if you want rounded corners */
+}
+
+#product1 .product_pro .des #product1 .product_pro:hover {
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
 }
