@@ -1,19 +1,9 @@
-#nav {
-    align-content: right;
-}
-
-
-/* .navbar-brand {
-  color: #40a2e3;
-  font-style: italic;
-  font-weight: bold;
-} */
-
 body {
     background-color: #FFF6E9;
 }
 
 .container {
+    padding: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,8 +39,7 @@ body {
     width: auto;
 }
 
-.search-input::placeholder,
-.search-icon {
+.search-input::placeholder, .search-icon {
     color: #0D9276;
 }
 
@@ -102,11 +91,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10% auto;
+    margin: 5% auto;
 }
 
-#backBtn,
-#nextBtn {
+#backBtn, #nextBtn {
     width: 50px;
     cursor: pointer;
     margin: 40px;
@@ -125,58 +113,4 @@ h5 {
     font-family: 'Inter';
     align-items: center;
     justify-items: center;
-}
-
-#product1 {
-    text-align: center;
-}
-
-.product-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 20px;
-}
-
-
-/* Product view section */
-
-#product1 .product-container {
-    /* list of product */
-    display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
-    flex-wrap: wrap;
-}
-
-#product1 .product_pro {
-    width: calc(25% - 80px);
-    /* Adjust width for spacing */
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* padding: 16px; */
-    text-align: center;
-    transition: 0.2s ease;
-}
-
-#product1 .product_pro img {
-    width: 100%;
-}
-
-#product1 .product_pro .des {
-    text-align: start;
-    padding: 10px 0;
-    background-color: #BBE2EC;
-    /* border-radius: 10px; */
-    /* This sets the background color */
-    /* padding: 8px; /* Add padding if needed */
-    /* b
-    order-radius: 4px; Optional, if you want rounded corners */
-}
-
-#product1 .product_pro .des #product1 .product_pro:hover {
-    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
 }
