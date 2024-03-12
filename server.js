@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 
 // Home page
 app.get("/", (req, res) => {
-    res.render("SignInSignUp");
+    res.render("product_1_view.ejs");
 });
 app.use(express.static('views'));
 
