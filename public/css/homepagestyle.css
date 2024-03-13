@@ -44,7 +44,11 @@ body {
   color: #0d9276;
 }
 
-.carousel-item {
+#section-1 .container-fluid .row {
+  padding: 20px;
+}
+
+#section-2 .container-fluid .row {
   padding: 25px;
 }
 
@@ -178,7 +182,7 @@ body {
 }
 
 .col-md-12 {
-  padding: 50px;
+  padding: 45px;
 }
 
 #section-6 {
