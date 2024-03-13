@@ -8,8 +8,17 @@ app.set("view engine", "ejs");
 
 // Home page
 app.get("/", (req, res) => {
-    res.render("SignInSignUp");
+    res.render("Homepage");
 });
+
+app.get("/signin-signup", (req,res) => {
+    res.render("SignInSignUp");
+})
+
+app.get("/homepage", (req,res) => {
+    res.render("Homepage");
+})
+
 app.use(express.static('views'));
 
 
