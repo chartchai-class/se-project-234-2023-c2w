@@ -9,39 +9,36 @@
 
 
 <body>
-    <header>
-        <%- include('partials/header'); %>
-    </header>
     <div class="wrapper">
         <div class="form-container sign-up">
             <form action="#">
                 <h2>sign up</h2>
                 <div class="form-group">
-                    <input type="text" required>
+                    <input type="text" name="firstname" maxlength="50" required>
                     <i class="fas fa-user"></i>
                     <label for="">firstname</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" required>
+                    <input type="text" name="lastname" maxlength="50" required>
                     <i class="fas fa-user"></i>
                     <label for="">lastname</label>
                 </div>
                 <div class="form-group">
-                    <input type="email" required>
+                    <input type="email" name="email" maxlength="50" required>
                     <i class="fas fa-at"></i>
                     <label for="">email</label>
                 </div>
                 <div class="form-group">
-                    <input type="password" required>
+                    <input type="password" name="pass" maxlength="50" required>
                     <i class="fas fa-lock"></i>
                     <label for="">password</label>
                 </div>
                 <div class="form-group">
-                    <input type="password" required>
+                    <input type="password" name="cpass" maxlength="50" required>
                     <i class="fas fa-lock"></i>
                     <label for="">confirm password</label>
                 </div>
-                <button type="submit" class="btn">sign up</button>
+                <button type="submit" name="submit" class="btn">sign up</button>
                 <div class="link">
                     <p>You already have an account?<a href="#" class="signin-link"> sign in</a></p>
                 </div>
@@ -86,7 +83,4 @@
         });
     </script>
 </body>
-<footer>
-    <%- include('partials/footer'); %>
-</footer>
 </html>
