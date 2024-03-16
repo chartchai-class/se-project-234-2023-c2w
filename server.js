@@ -1,19 +1,16 @@
 var express = require("express");
 var app = express();
-const port = 8003;
-const db = require("./config/db");
+const port = 3306;
+// const db = require("./config/db");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 // Set the view engine to EJS
 app.set("view engine", "ejs");
 
-// Home page
-// app.get("/", (req, res) => {
-//     res.render("Homepage.ejs");
-// });
+
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("SignInSignUp.ejs");
 });
 app.use(express.static("views"));
 
@@ -26,6 +23,7 @@ app.get("/product_1", (req, res) => {
 app.get("/product_2", (req, res) => {
   res.render("product_2_view.ejs");
 });
+
 
 // // Route for product 3
 // app.get("/product_3", (req, res) => {
