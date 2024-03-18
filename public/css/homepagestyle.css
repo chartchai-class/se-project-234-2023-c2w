@@ -18,6 +18,7 @@ body {
   display: flex;
   align-items: left;
   justify-content: left;
+  margin-top: 40px;
   padding: 14px;
   border-radius: 8px;
   background-color: white;

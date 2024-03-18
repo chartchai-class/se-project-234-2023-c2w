@@ -1,19 +1,19 @@
-// const mysql = require("mysql2");
+const mysql = require("mysql2");
 
-// let config = { host: "localhost", 
-// user: "root",
-// password: "christina-13",
-// database: "C2Wshop"
-// };
-
-// const connection = mysql.createConnection(config);
-
-// connection.connect(function (err) {
-//     if (err) {
-//         return console.error("error: " + err.message);
-//     }
-
-//     console.log("Connected to the MySQL server.");
-// });
-
-// module.exports = mysql.createConnection(config);
+const connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "parw06062544",
+    database: "C2Wshop",
+  });
+  
+  connection.connect(function(err) {
+    if (err) {
+      console.error('Error connecting: ' + err.stack);
+      return;
+    }
+  
+    console.log('Connected as id ' + connection.threadId);
+  });
+  
+  module.exports = connection;

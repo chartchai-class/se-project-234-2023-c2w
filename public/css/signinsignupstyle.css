@@ -130,6 +130,22 @@ form .form-group input:valid~i {
   cursor: pointer;
   box-shadow: 0 .2rem 1rem rgba(0 0 0 / .4);
 }
+/* Add to your existing CSS */
+.wrapper .form-container form .link .back-home {
+  margin-top: 2rem; /* Or adjust to the space you want */
+}
+
+.wrapper .form-container form .link .home-link {
+  font-size: 1.6rem; /* Or adjust to the size you want */
+  color: #40a2e3; /* Or any other color you prefer */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.wrapper .form-container form .link .home-link:hover {
+  color: #3071a9; /* Or any other color for hover state */
+}
 
 .wrapper .form-container form .link {
   text-align: center;
@@ -219,41 +235,4 @@ form .form-group input:valid~i {
       transform: rotate(0);
       z-index: 1;
   }
-}
-/* HAMBURGERMENU DECORATION
--------------------------------------------------- */
-.navbar-toggler {
-  border: none;
-  background-color: transparent;
-}
-
-.navbar-toggler:focus {
-  box-shadow: none;
-}
-
-.navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='rgb(0,128,0)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
-}
-.nav-icons a {
-  padding: 0 15px; /* เพิ่มระยะห่างระหว่างไอคอน */
-}
-
-
-/* DROPDOWN ITEM DECORATION
--------------------------------------------------- */
-/* ปรับแต่ง dropdown menu */
-.navbar .dropdown-menu {
-  background-color: #ffffff; /* สีพื้นหลังของ dropdown */
-  border: none; /* ไม่มีเส้นขอบ */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาเพื่อเพิ่มความมีมิติ */
-}
-
-/* ปรับแต่ง items ภายใน dropdown */
-.navbar .dropdown-item {
-  color: #333333; /* สีตัวอักษรของ items */
-  transition: background-color 0.2s ease; /* ทำให้เกิดการเปลี่ยนแปลงแบบ smooth */
-}
-
-.navbar .dropdown-item:hover {
-  background-color: #f8f9fa; /* สีพื้นหลังของ item เมื่อ hover */
 }
