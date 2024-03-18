@@ -4,6 +4,10 @@
   ],
   "hints": {
     "axe/text-alternatives": "off",
-    "compat-api/css": "off"
+    "axe/forms": "off",
+    "axe/name-role-value": "off",
+    "no-inline-styles": "off",
+    "compat-api/css": "off",
+    "axe/parsing": "off"
   }
 }

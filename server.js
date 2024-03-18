@@ -1,17 +1,15 @@
 var express = require("express");
 var app = express();
-const port = 8003;
-const db = require("./config/db");
+const PORT = 8003;
+const connection = require('./config/db');
+
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 // Set the view engine to EJS
 app.set("view engine", "ejs");
 
-// Home page
-// app.get("/", (req, res) => {
-//     res.render("Homepage.ejs");
-// });
+
 app.get("/", (req, res) => {
   res.render("index.ejs");
 });
@@ -32,6 +30,21 @@ app.get("/product_2", (req, res) => {
 //     res.render("product_3_view.ejs");
 // });
 
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+// app.post('/category/add', async (req, res) => {
+//   const { category_name } = req.body;
+//   try {
+//       // ตรงนี้ต้องเปลี่ยนตามตารางที่เราจะแก้ไขของเราจะแก้แค่ category_name ก็ใส่แค่ category_name ส่วน value ก็คือค่าที่เราแก้ไขและเอาไป insert
+//       await db.query('INSERT INTO category_table (category_name) VALUES (?)', ['<New Category>']); 
+
+//       res.redirect('/category');
+//   } catch (err) {
+//       console.error('Error adding category', err);
+//       res.status(500).send('Server Error');
+//   }
+// });
+
+
+
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });

@@ -4,14 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sing in & Sing up</title>
-    <link rel="stylesheet" href="/css/signinsignupstyle.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-
 <body>
-    <header>
-        <%- include('partials/header'); %>
-    </header>
     <div class="wrapper">
         <div class="form-container sign-up">
             <form action="#">
@@ -70,23 +65,6 @@
             </form>
         </div>
     </div>
-    <script>
-        let wrapper = document.querySelector('.wrapper'),
-            signUpLink = document.querySelector('.link .signup-link'),
-            signInLink = document.querySelector('.link .signin-link');
-
-        signUpLink.addEventListener('click', () => {
-            wrapper.classList.add('animated-signin');
-            wrapper.classList.remove('animated-signup');
-        });
-
-        signInLink.addEventListener('click', () => {
-            wrapper.classList.add('animated-signup');
-            wrapper.classList.remove('animated-signin');
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
-<footer>
-    <%- include('partials/footer'); %>
-</footer>
 </html>

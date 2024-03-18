@@ -130,3 +130,14 @@ const initSlider2 = () => {
 }
 
 window.addEventListener("load", initSlider2);
+
+//popup checkout
+let popup = document.getElementById("popup");
+
+function openPopup() {
+    popup.classList.add("open-popup");
+}
+
+function closePopup() {
+    popup.classList.remove("open-popup");
+}
