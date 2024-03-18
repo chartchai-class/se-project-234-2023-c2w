@@ -1,5 +1,6 @@
 /* HAMBURGERMENU DECORATION
 -------------------------------------------------- */
+
 .navbar-toggler {
   border: none;
   background-color: transparent;
@@ -17,23 +18,27 @@
 }
 
 
+
 /* DROPDOWN ITEM DECORATION
 -------------------------------------------------- */
+.navbar{
+  padding-top: 0px; /* ปรับค่านี้ตามความสูงของ navbar ของคุณ */
+
+}
 /* ปรับแต่ง dropdown menu */
 .navbar .dropdown-menu {
-  background-color: #ffffff; /* สีพื้นหลังของ dropdown */
-  border: none; /* ไม่มีเส้นขอบ */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาเพื่อเพิ่มความมีมิติ */
+  background-color: #ffffff; 
+  border: none; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-/* ปรับแต่ง items ภายใน dropdown */
 .navbar .dropdown-item {
-  color: #333333; /* สีตัวอักษรของ items */
-  transition: background-color 0.2s ease; /* ทำให้เกิดการเปลี่ยนแปลงแบบ smooth */
+  color: #333333; 
+  transition: background-color 0.2s ease; 
 }
 
 .navbar .dropdown-item:hover {
-  background-color: #f8f9fa; /* สีพื้นหลังของ item เมื่อ hover */
+  background-color: #f8f9fa; 
 }
 
 
@@ -51,15 +56,7 @@
   /* padding: 20px; */
 }
 #product1 .product_pro {
-  /* width: 23%;
-  min-width: 250px;
-  padding: 10px 12px;
-  border: 1px solid #cce7d0;
-  border-radius: 20px;
-  cursor: pointer;
-  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
 
-  margin-left: 25px; Adjust this value to increase or decrease the space */
   width: calc(25% - 40px); /* Adjust width for spacing */
   margin-bottom: 20px;
   background-color: #fff;
@@ -74,9 +71,8 @@
   border-radius: 20px;
 }
 #product1 .product_pro .des {
-  background-color: #bbe2ec; /* This sets the background color */
-  /* padding: 8px; /* Add padding if needed */
-  /* border-radius: 4px; Optional, if you want rounded corners */
+  background-color: #bbe2ec; 
+
 }
 
 #product1 .product-container {
@@ -84,17 +80,9 @@
 }
 
 #product1 .product_pro .des {
-  /*#product1 .product_pro .des {
-      text-align: start;
-      padding: 10px 0;
-      background-color: #BBE2EC;
-      /* border-radius: 10px; */
+
   background-color: #bbe2ec;
-  /* border-radius: 10px; */
-  /* This sets the background color */
-  /* padding: 8px; /* Add padding if needed */
-  /* b
-      order-radius: 4px; Optional, if you want rounded corners */
+
 }
 
 #product1 .product_pro .des #product1 .product_pro:hover {
@@ -149,11 +137,37 @@ No newline at end of file
 }
 
 /* Card body styling */
-.card-body {
-  padding: 1rem; /* Padding inside the card body */
-  background: #bbe2ec; /* White background for the card body */
-  text-align: center; /* Center text inside the card body */
+/* .card-body {
+  padding: 1rem; 
+  background: #bbe2ec; 
+  text-align: center; 
 }
+.card.product-card {
+  position: relative;
+}
+
+.card-body .price {
+  font-size: 1.5em; 
+  color: #000000; 
+} */
+.card-body {
+  padding: 1rem; /* ระยะห่างภายใน card body */
+  background: #bbe2ec; /* สีพื้นหลังสำหรับ card body */
+  text-align: left; /* จัดข้อความให้อยู่ตรงกลางของ card body */
+}
+
+.card.product-card {
+  position: relative; /* ตำแหน่งเป็นสัมพันธ์ */
+  /* เพิ่ม style อื่นๆ ตามความต้องการ */
+}
+
+.card-body .price {
+  font-size: 1.5em; /* ขนาดของตัวอักษรสำหรับราคา */
+  color: #31363F; /* สีของตัวอักษรสำหรับราคา */
+  /* เพิ่ม style อื่นๆ ตามความต้องการ */
+  margin-top: 1rem; /* ระยะห่างจากข้อความด้านบน */
+}
+
 
 .card-title {
   margin-bottom: 0.5rem; /* Space below the title */
@@ -240,7 +254,7 @@ body {
 /* Card title with a larger font-size for emphasis */
 .card-title {
   font-size: 1.5rem;
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #333; /* Dark grey for better readability */
 }
 
@@ -315,6 +329,22 @@ p {
 .my-3 {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.card.product-card-link {
+  text-decoration: none; /* ลบเส้นใต้ของ link */
+  color: inherit; /* Link จะใช้สีข้อความเดียวกับที่ถูกสืบทอดมา */
+}
+
+.card.product-card-link:hover,
+.card.product-card-link:focus {
+  text-decoration: none; /* ลบเส้นใต้เมื่อ hover หรือ focus */
+}
+
+/* ตั้งค่าเพิ่มเติมสำหรับเมื่อผู้ใช้ hover ไปที่ card */
+.card.product-card-link:hover .card.product-card,
+.card.product-card-link:focus .card.product-card {
+  /* เพิ่มเอฟเฟกต์เมื่อ hover หรือ focus เช่นเปลี่ยนสีพื้นหลัง, เส้นขอบ ฯลฯ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ตัวอย่างเอฟเฟกต์เมื่อ hover */
 }
 
 /* BASE PAGINATION STYLING
