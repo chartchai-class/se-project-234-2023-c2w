@@ -1,8 +1,7 @@
 var express = require("express");
 var app = express();
-const PORT = 8003;
-const connection = require('./config/db');
-
+const port = 3306;
+// const db = require("./config/db");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -15,20 +14,30 @@ app.get("/", (req, res) => {
 });
 app.use(express.static("views"));
 
-// Route for product 1
+// Route for SignIn/SignUp
+app.get("/SignInUp", (req, res) => {
+    res.render("SignInSignUp.ejs");
+  });
+  
+// Route for shoe
 app.get("/product_1", (req, res) => {
   res.render("product_1_view.ejs");
 });
 
-// Route for product 2
+// Route for shirt
 app.get("/product_2", (req, res) => {
   res.render("product_2_view.ejs");
 });
 
-// // Route for product 3
-// app.get("/product_3", (req, res) => {
-//     res.render("product_3_view.ejs");
-// });
+// Route for trouser
+app.get("/product_3", (req, res) => {
+  res.render("product_3_view.ejs");
+});
+
+// Route for product detial
+app.get("/product_detail", (req, res) => {
+    res.render("product_details.ejs");
+});
 
 // app.post('/category/add', async (req, res) => {
 //   const { category_name } = req.body;
