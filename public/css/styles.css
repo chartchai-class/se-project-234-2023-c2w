@@ -84,17 +84,9 @@
 }
 
 #product1 .product_pro .des {
-  /*#product1 .product_pro .des {
-      text-align: start;
-      padding: 10px 0;
-      background-color: #BBE2EC;
-      /* border-radius: 10px; */
+
   background-color: #bbe2ec;
-  /* border-radius: 10px; */
-  /* This sets the background color */
-  /* padding: 8px; /* Add padding if needed */
-  /* b
-      order-radius: 4px; Optional, if you want rounded corners */
+
 }
 
 #product1 .product_pro .des #product1 .product_pro:hover {

@@ -130,3 +130,29 @@ const initSlider2 = () => {
 }
 
 window.addEventListener("load", initSlider2);
+
+                            // SigninSignUp Script
+                            let wrapper = document.querySelector('.wrapper'),
+    signUpLink = document.querySelector('.link .signup-link'),
+    signInLink = document.querySelector('.link .signin-link');
+
+signUpLink.addEventListener('click', () => {
+    wrapper.classList.add('animated-signin');
+    wrapper.classList.remove('animated-signup');
+});
+
+signInLink.addEventListener('click', () => {
+    wrapper.classList.add('animated-signup');
+    wrapper.classList.remove('animated-signin');
+});
+
+//popup checkout
+let popup = document.getElementById("popup");
+
+function openPopup() {
+    popup.classList.add("open-popup");
+}
+
+function closePopup() {
+    popup.classList.remove("open-popup");
+}
