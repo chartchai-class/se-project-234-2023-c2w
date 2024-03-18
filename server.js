@@ -39,6 +39,12 @@ app.get("/product_detail", (req, res) => {
     res.render("product_details.ejs");
 });
 
+app.post("/store-location", (req, res) => {
+  // ส่งข้อมูลหรือ render หน้าที่มีแผนที่ตั้งร้านค้า
+  res.render("storeLocation.ejs");
+});
+
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
