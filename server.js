@@ -1,6 +1,6 @@
 var express = require("express");
 var app = express();
-const port = 3306;
+const port = 3000;
 // const db = require("./config/db");
 
 app.use(express.static("public"));

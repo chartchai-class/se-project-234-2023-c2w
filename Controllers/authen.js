@@ -15,7 +15,7 @@ const userLogin = async function (req,res, email, password) {
       req.session.authenticated = true;
       req.session.userId = oldUser.id;
       req.session.email = email;
-      req.session.wish = [];
+
     } else {
       // incorrect password
       req.session.authenticated = false;
@@ -29,8 +29,9 @@ const userLogin = async function (req,res, email, password) {
     // create session as defined
     req.session.authenticated = true;
     req.session.userId = newUser.id;
+    req.session.firstname = firstname;
+    req.session.lastname = lastname;
     req.session.email = email;
-    req.session.wish = [];
   }
 
   console.log("session in UserLogin: ", req.sessionID);
