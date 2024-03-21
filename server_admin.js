@@ -36,6 +36,39 @@ app.use(session({
   cookie: { secure: true }
 }));
 
+app.get("/", (req, res) => {
+  res.render("dashboard.ejs");
+});
+app.use(express.static("views"));
+
+// Route for customers
+app.get("/customers", (req, res) => {
+    res.render("customers.ejs");
+  });
+
+// Route for category
+app.get("/category", (req, res) => {
+  res.render("categoryList.ejs");
+});
+
+// Route for All product
+app.get("/productList", (req, res) => {
+  res.render("productList.ejs");
+});
+
+// Route for history
+app.get("/salesHistory", (req, res) => {
+  res.render("salesHistory.ejs");
+});
+
+// Route for Sign out
+app.get("/logOut", (req, res) => {
+  res.render("signup_admin.ejs");
+});
+
+
+
+
 
 // app.post("/auth/register", (req, res) => {    
 //   const { name, email, password, password_confirm } = req.body
