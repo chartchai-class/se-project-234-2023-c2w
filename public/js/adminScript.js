@@ -1,14 +1,13 @@
-//Admin log-in page
-let wrapper = document.querySelector('.wrapper'),
-    signUpLink = document.querySelector('.link .signup-link'),
-    signInLink = document.querySelector('.link .signin-link');
 
-signUpLink.addEventListener('click', () => {
-    wrapper.classList.add('animated-signin');
-    wrapper.classList.remove('animated-signup');
-});
-
-signInLink.addEventListener('click', () => {
-    wrapper.classList.add('animated-signup');
-    wrapper.classList.remove('animated-signin');
-});
+function openNav() {
+    document.getElementById("mySidebar").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";  
+    document.getElementById("main-content").style.marginLeft = "250px";
+    document.getElementById("main").style.display="none";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";  
+    document.getElementById("main").style.display="block";  
+  }

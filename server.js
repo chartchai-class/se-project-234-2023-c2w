@@ -1,8 +1,11 @@
 var express = require("express");
 var app = express();
-const port = 3306;
-// const db = require("./config/db");
+const db = require("./config/db")(app);
+const PORT_USER = process.env.PORT_USER || 3000;
+const productRoutes = require('./routes/productRoutes');
 
+app.use(express.json());
+app.use('/api/products', productRoutes);
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 // Set the view engine to EJS
@@ -45,6 +48,6 @@ app.post("/store-location", (req, res) => {
 });
 
 
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+app.listen(PORT_USER, () => {
+    console.log(`User server is running on port ${PORT_USER}`);
 });

@@ -1,66 +1,68 @@
 const UserDB = require("../models/userModel");
-const Authen = require("./controllers/authen");
+const bcrypt = require('bcrypt');
 
-const userLogin = async function (req,res, email, password) {
-  // check if user already exist
-  // Validate if user exist in our database
+const userLogin = async function (req, res, email, password) {
+  // Check if user exists
   const oldUser = await UserDB.getUserByEmail(email);
 
   if (oldUser) {
-    // User already exist and if password is correct
-      // >> update session information
+    // Check if the provided password matches the stored password
+    const isMatch = await bcrypt.compare(password, oldUser.password);
 
-    if (oldUser.password === password) {
-      // correct password
+    if (isMatch) {
+      // Password is correct
       req.session.authenticated = true;
-      req.session.userId = oldUser.id;
-      req.session.email = email;
-      req.session.wish = [];
+      req.session.userId = oldUser.user_id;
+      req.session.email = oldUser.email;
+
+      // Redirect to dashboard or relevant page
+      res.redirect('/dashboard');
     } else {
-      // incorrect password
+      // Incorrect password
       req.session.authenticated = false;
-      res.json({ msg: "Wrong authentication" });
+      res.status(401).json({ msg: "Incorrect username or password" });
     }
   } else {
-    // new user --> add new user to database
-    // note that, normally, a user is not added to a system simply like this.
-    const newUser = UserDB.create({ email: email, password: password });
-
-    // create session as defined
-    req.session.authenticated = true;
-    req.session.userId = newUser.id;
-    req.session.email = email;
-    req.session.wish = [];
+    // User does not exist
+    res.status(404).json({ msg: "User does not exist" });
   }
-
-  console.log("session in UserLogin: ", req.sessionID);
-  console.log(req.session);
-
-  return req.session;
 };
 
-exports.userLogin = userLogin;
-
-module.exports.authentication = async (req, res, next) => {
-  const authenicated = await req.session.authenticated;
-
-  console.log("session in authentication: ", req.sessionID);
-
-  if (!authenicated) {
+const authentication = async (req, res, next) => {
+  if (!req.session.authenticated) {
     return res.redirect("/login?q=session-expired");
   }
-  try {
-    
-    let user = await UserDB.findById(req.session.userId);
 
-    console.log("user:" + user.email);
+  try {
+    let user = await UserDB.findById(req.session.userId);
 
     if (!user) {
       return res.redirect("/login?q=session-expired");
     }
     next();
   } catch (err) {
-    console.log(err);
-    res.json({ msg: "Server error. Please reload page after sometime" });
+    console.error(err);
+    res.status(500).json({ msg: "Server error. Please try again later." });
   }
 };
+
+
+const userModel = require('../models/userModel');
+
+exports.updateUserRole = async (req, res) => {
+  try {
+    const { userId, newRole } = req.body;
+    const affectedRows = await userModel.updateUserRole(userId, newRole);
+    
+    if (affectedRows > 0) {
+      res.status(200).send('User role updated successfully');
+    } else {
+      res.status(404).send('User not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error updating user role');
+  }
+};
+
+module.exports = { userLogin, authentication };

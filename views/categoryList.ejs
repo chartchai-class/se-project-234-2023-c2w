@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category</title>
+    <link rel="stylesheet" href="adminStyle.css" />
+    <script src="adminScript.js"></script>
+    <script src="admin.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="details">
+          <div class="category">
+            <div class="cardHeader">
+              <h2>Category Items</h2>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">I.D.</th>
+                  <th class="text-center">Category Name</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="categoryTableBody"></tbody>
+            </table>
+
+            <!-- Trigger the modal with a button -->
+            <button
+              type="button"
+              class="btn category-btn my-3"
+              data-toggle="modal"
+              data-target="#myModal"
+            >
+              Add Category
+            </button>
+          </div>
+          <!-- Modal for adding category -->
+          <!-- Keep the modal as it is, since it's mainly HTML and bootstrap -->
+          <!-- Your existing modal code here -->
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Assuming you have an endpoint like '/api/categories' to fetch category data
+      fetch("/api/categories")
+        .then((response) => response.json())
+        .then((data) => {
+          const tableBody = document.getElementById("categoryTableBody");
+          data.forEach((item, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${index + 1}</td>
+              <td>${item.category_name}</td>
+              <td><button class="btn btn-danger" style="height:40px" onclick="categoryDelete('${
+                item.category_id
+              }')">Delete</button></td>
+            `;
+            tableBody.appendChild(row);
+          });
+        });
+
+      function categoryDelete(categoryId) {
+        // Implement the deletion logic here, possibly sending a request to the server
+        console.log("Delete category with ID:", categoryId);
+        // After deletion, you might want to remove the row or refresh the table content
+      }
+    </script>
+  </body>
+</html>

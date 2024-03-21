@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customers</title>
+    <link rel="stylesheet" href="adminStyle.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="details">
+          <div class="customer">
+            <div class="cardHeader">
+              <h2>All Customers</h2>
+            </div>
+
+            <table class="table" id="customersTable">
+              <thead>
+                <tr>
+                  <th class="text-center">I.D.</th>
+                  <th class="text-center">Firstname</th>
+                  <th class="text-center">Lastname</th>
+                  <th class="text-center">Email</th>
+                  <th class="text-center">Password</th>
+                  <th class="text-center" colspan="2">Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- JavaScript will populate table rows here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Fetching user data from a server endpoint and populating the table
+      fetch("../path/to/your/endpoint")
+        .then((response) => response.json())
+        .then((data) => {
+          const table = document
+            .getElementById("customersTable")
+            .getElementsByTagName("tbody")[0];
+
+          data.forEach((row, index) => {
+            let newRow = table.insertRow();
+            newRow.insertCell(0).textContent = index + 1;
+            newRow.insertCell(
+              1
+            ).textContent = `${row.first_name} ${row.last_name}`;
+            newRow.insertCell(2).textContent = row.email;
+            newRow.insertCell(3).textContent = row.contact_no;
+            newRow.insertCell(4).textContent = row.registered_at;
+          });
+        })
+        .catch((error) => console.error("Error:", error));
+    </script>
+  </body>
+</html>
