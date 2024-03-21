@@ -1,7 +1,19 @@
-var express = require("express");
-var app = express();
-const port = 8000;
-const db = require("./config/db");
+const express = require('express');
+const app = express();
+const db = require('./config/db'); // Import db.js
+
+// Import MySQL module
+const mysql = require('mysql2');
+require("dotenv").config();
+
+// ตั้งค่าการเชื่อมต่อกับฐานข้อมูล
+const connection = db(mysql, process.env); // ส่ง mysql module และ environment variables ไปยัง db.js
+
+const PORT_ADMIN = process.env.PORT_ADMIN || 8000;
+
+// Middleware
+app.use(express.json());
+
 // const bcrypt = require("bcryptjs");
 
 
@@ -59,7 +71,7 @@ app.get("/dashboard", (req, res) => {
 });
 
 
-
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+// Start the server
+app.listen(PORT_ADMIN, () => {
+  console.log(`Admin server is running on port ${PORT_ADMIN}`);
 });

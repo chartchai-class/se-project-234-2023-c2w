@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Size</title>
+    <link rel="stylesheet" href="adminStyle.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="details">
+          <div class="productSize">
+            <div class="cardHeader">
+              <h2>Product Size</h2>
+            </div>
+
+            <table class="class">
+              <thead>
+                <tr>
+                  <th class="text-center"></th>
+                  <th class="text-center">I.D.</th>
+                  <th class="text-center">Product Name</th>
+                  <th class="text-center">Size</th>
+                  <th class="text-center">Stock Quantity</th>
+                  <th class="text-center" colspan="2">Action</th>
+                </tr>
+              </thead>
+
+              <tbody class="productSizeTableBody"></tbody>
+            </table>
+            <!-- Modal Trigger and Content remains the same -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/path/to/your/api/endpoint") // Adjust this to your API endpoint
+          .then((response) => response.json())
+          .then((data) => {
+            const tableBody = document.getElementById("productSizeTableBody");
+            data.forEach((item, index) => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+                  <td class="text-center">${index + 1}</td>
+                  <td class="text-center">${item.product_name}</td>
+                  <td class="text-center">${item.size_name}</td>
+                  <td class="text-center">${item.quantity_in_stock}</td>
+                  <td class="text-center"><button class="btn btn-primary" style="height:40px" onclick="variationEditForm('${
+                    item.variation_id
+                  }')">Edit</button></td>
+                  <td class="text-center"><button class="btn btn-danger" style="height:40px" onclick="variationDelete('${
+                    item.variation_id
+                  }')">Delete</button></td>
+                `;
+              tableBody.appendChild(row);
+            });
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+      });
+    </script>
+  </body>
+</html>

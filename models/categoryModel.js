@@ -1,4 +1,4 @@
-const BaseSQLModel = require("./baseSQLModel");
+const BaseSQLModel = require("./BaseSQLModel");
 
 // Create a new class for a specific table
 class ProductModel extends BaseSQLModel {

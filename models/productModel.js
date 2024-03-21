@@ -1,14 +1,30 @@
-const BaseSQLModel = require("./baseSQLModel");
+const BaseSQLModel = require('./BaseSQLModel');
 
-// Create a new class for a specific table
 class ProductModel extends BaseSQLModel {
-
   constructor() {
-    super("products"); //table 'products'
+    super('products'); // 'products' is the table name in the database
   }
 
+  // Find all products by category ID and sort by product sales count descending
+  findAllByCategoryIdAndSort(categoryId) {
+    const query = `SELECT * FROM ${this.tableName} WHERE category_id = ? ORDER BY product_sales_count DESC`;
+    return this.executeQuery(query, [categoryId]);
+  }
+
+  // Add a new product to a category
+  addProductToCategory(productData) {
+    return this.create(productData);
+  }
+
+  // Edit an existing product
+  editProduct(productId, productData) {
+    return this.update(productId, productData);
+  }
+
+  // Delete a product
+  deleteProduct(productId) {
+    return this.delete(productId);
+  }
 }
 
-const ProductDB = new ProductModel();
-
-module.exports = ProductDB;
+module.exports = new ProductModel();
