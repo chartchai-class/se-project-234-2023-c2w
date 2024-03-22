@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="details">
+          <div class="eachOrder">
+            <div class="cardHeader">
+              <h2>Order</h2>
+            </div>
+
+            <table class="table table-striped" id="orderDetailsTable">
+              <thead>
+                <tr>
+                  <th>I.D.</th>
+                  <th>Product Image</th>
+                  <th>Product Name</th>
+                  <th>Size</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- JavaScript will populate table body -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const params = new URLSearchParams(window.location.search);
+        const orderID = params.get("orderID");
+
+        fetch(`/api/getOrderDetails?orderID=${orderID}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const tableBody = document
+              .getElementById("orderDetailsTable")
+              .getElementsByTagName("tbody")[0];
+            data.forEach((item, index) => {
+              let row = tableBody.insertRow();
+              row.insertCell(0).textContent = index + 1;
+              let imgCell = row.insertCell(1);
+              let img = document.createElement("img");
+              img.src = item.product_image;
+              img.height = 80;
+              imgCell.appendChild(img);
+              row.insertCell(2).textContent = item.product_name;
+              row.insertCell(3).textContent = item.size_name;
+              row.insertCell(4).textContent = item.quantity;
+              row.insertCell(5).textContent = item.price;
+            });
+          })
+          .catch((error) => console.error("Error:", error));
+      });
+    </script>
+  </body>
+</html>
