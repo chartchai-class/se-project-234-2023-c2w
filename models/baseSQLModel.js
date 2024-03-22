@@ -1,13 +1,5 @@
 const mysql = require('mysql2');
-
-// // Database connection pool configuration
-// const pool = mysql.createPool({
-//   connectionLimit: 10,
-//   host: 'your-database-host',
-//   user: 'your-database-username',
-//   password: 'your-database-password',
-//   database: 'your-database-name'
-// });
+const pool = require('../config/db'); 
 
 class BaseSQLModel {
   constructor(tableName) {
