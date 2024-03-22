@@ -1,7 +1,4 @@
 
-// app.use(express.static("public"));
-// app.use(express.urlencoded({ extended: true }));
-
 const express = require('express');
 const app = express();
 const db = require("./config/db");
@@ -11,19 +8,62 @@ require('dotenv').config();
 const productRoutes = require('./routes/productRoutes');
 
 app.use(express.json());
+const session = require('express-session');
 app.use('/api/products', productRoutes);
-// const PORT_USER = process.env.PORT_USER || 3000;
-// const PORT_ADMIN = process.env.PORT_ADMIN || 8000;
 const userRoutes = require('./routes/userRoutes.js');
 const adminRoutes = require('./routes/adminRoutes.js');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
+
+
 // กำหนด routes ที่นี่
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 
+app.get("/admin", (req, res) => {
+  res.render("signup_admin.ejs");
+});
+
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
+
+app.get("/admin", (req, res) => {
+  res.render("dashboard.ejs");
+});
+app.use(express.static("views"));
+
+// Route for customers
+app.get("/customers", (req, res) => {
+    res.render("customers.ejs");
+  });
+
+// Route for category
+app.get("/category", (req, res) => {
+  res.render("categoryList.ejs");
+});
+
+// Route for All product
+app.get("/productList", (req, res) => {
+  res.render("productList.ejs");
+});
+
+// Route for history
+app.get("/salesHistory", (req, res) => {
+  res.render("salesHistory.ejs");
+});
+
+// Route for Sign out
+app.get("/logOut", (req, res) => {
+  res.render("signup_admin.ejs");
+});
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -47,8 +87,8 @@ app.get("/", (req, res) => {
 app.use(express.static("views"));
 
 // Route for SignIn/SignUp
-app.get("/SignInUp", (req, res) => {
-    res.render("SignInSignUp.ejs");
+app.get("/user", (req, res) => {
+    res.render("signup_user.ejs");
   });
   
 // Route for shoe
@@ -96,4 +136,3 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-// ไม่ควรใช้ module.exports = connection; ใน server.js
