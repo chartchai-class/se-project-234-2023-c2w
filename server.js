@@ -85,7 +85,7 @@ app.get("/productList/add/" , (req,res) => {
 
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("index");
 });
 app.use(express.static("views"));
 
