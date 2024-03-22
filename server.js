@@ -1,13 +1,42 @@
-var express = require("express");
-var app = express();
-const db = require("./config/db")(app);
-const PORT_USER = process.env.PORT_USER || 3000;
+
+// app.use(express.static("public"));
+// app.use(express.urlencoded({ extended: true }));
+
+const express = require('express');
+const app = express();
+const db = require("./config/db");
+const bcrypt = require('bcrypt');
+const mysql = require('mysql2');
+require('dotenv').config();
 const productRoutes = require('./routes/productRoutes');
 
 app.use(express.json());
 app.use('/api/products', productRoutes);
-app.use(express.static("public"));
+// const PORT_USER = process.env.PORT_USER || 3000;
+// const PORT_ADMIN = process.env.PORT_ADMIN || 8000;
+const userRoutes = require('./routes/userRoutes.js');
+const adminRoutes = require('./routes/adminRoutes.js');
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// กำหนด routes ที่นี่
+app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
+
+
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
+});
+
+connection.connect(error => {
+  if (error) throw error;
+  console.log('Successfully connected to the database.');
+});
+
 // Set the view engine to EJS
 app.set("view engine", "ejs");
 
@@ -47,7 +76,24 @@ app.post("/store-location", (req, res) => {
   res.render("storeLocation.ejs");
 });
 
+// // ตัวอย่างการใช้ app.post ใน server.js หรือ route file
+// app.post('/signup_admin', async (req, res) => {
+//   const { firstname, lastname, email, password } = req.body;
+//   const hashedPassword = await bcrypt.hash(password, 10);
+//   const newUser = { firstname, lastname, email, password: hashedPassword, role: 'admin' };
+//   connection.query('INSERT INTO users SET ?', newUser, (error, results) => {
+//     if (error) {
+//       console.error(error);
+//       return res.status(500).send('Server error');
+//     }
+//     res.redirect('/success');
+//   });
+// });
 
-app.listen(PORT_USER, () => {
-    console.log(`User server is running on port ${PORT_USER}`);
+// กำหนด port สำหรับเซิร์ฟเวอร์
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
+
+// ไม่ควรใช้ module.exports = connection; ใน server.js
