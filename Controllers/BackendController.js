@@ -1,5 +1,6 @@
 const User = require('../models/userModel');
 
+//check email password role
 exports.signup = async (req, res) => {
   const { email, password, role } = req.body;
 
