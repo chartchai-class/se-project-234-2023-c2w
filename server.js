@@ -1,57 +1,103 @@
-
-// app.use(express.static("public"));
-// app.use(express.urlencoded({ extended: true }));
-
 const express = require('express');
-const app = express();
-// const db = require("./config/db");
-// const bcrypt = require('bcrypt');
-// const mysql = require('mysql2');
-// require('dotenv').config();
+const mysql = require('mysql2');
+const session = require('express-session');
+require('dotenv').config();
 const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const salesRoutes = require('./routes/salesRoutes');
+const bestSellersRoutes = require('./routes/bestSellerRoutes');
 
-app.use(express.json());
-app.use('/api/products', productRoutes);
-// const PORT_USER = process.env.PORT_USER || 3000;
-// const PORT_ADMIN = process.env.PORT_ADMIN || 8000;
-// const userRoutes = require('./routes/userRoutes.js');
-// const adminRoutes = require('./routes/adminRoutes.js');
-app.use(express.static("public"));
 
+const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+let PORT = process.env.PORT || 3000;
 
-// กำหนด routes ที่นี่
-// app.use('/user', userRoutes);
-// app.use('/admin', adminRoutes);
+// Middlewares
 
+app.use(session({
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // set to true if using https
+}));
 
-// const connection = mysql.createConnection({
-//   host: process.env.DB_HOST,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASS,
-//   database: process.env.DB_NAME
-// });
+// Static files
+app.use(express.static("public"));
+// Only if you have static files in views
 
-// connection.connect(error => {
-//   if (error) throw error;
-//   console.log('Successfully connected to the database.');
-// });
-
-// Set the view engine to EJS
+// View engine
 app.set("view engine", "ejs");
+
+// Routes
+app.use('/api/products', productRoutes);
+app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
+app.use('/api', salesRoutes);
+app.use('/api', bestSellersRoutes);
+
+
+
+
+app.get("/admin", (req, res) => {
+  res.render("signup_admin.ejs");
+});
+
+app.get("/admin", (req, res) => {
+  res.render("dashboard.ejs");
+});
+
+
+// Route for customers
+app.get("/customers", (req, res) => {
+  res.render("customers.ejs");
+});
+
+// Route for category
+app.get("/category", (req, res) => {
+  res.render("categoryList.ejs");
+});
+
+app.get("/cart", (req, res) => {
+  res.render("cartPage.ejs");
+});
+
+// Route for All product
+app.get("/productList", (req, res) => {
+  res.render("productList.ejs");
+});
+
+// Route for history
+app.get("/salesHistory", (req, res) => {
+  res.render("salesHistory.ejs");
+});
+
+// Route for Sign out
+app.get("/logOut", (req, res) => {
+  res.render("signup_admin.ejs");
+});
+
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard");
+});
+
+app.get("/productList/add/" , (req,res) => {
+  res.render("viewProductDetail")
+});
+
 
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("dashboard.ejs");
 });
 app.use(express.static("views"));
 
 // Route for SignIn/SignUp
-app.get("/SignInUp", (req, res) => {
-    res.render("SignInSignUp.ejs");
-  });
-  
+app.get("/user", (req, res) => {
+  res.render("signup_user.ejs");
+});
+
 // Route for shoe
 app.get("/product_1", (req, res) => {
   res.render("product_1_view.ejs");
@@ -69,7 +115,11 @@ app.get("/product_3", (req, res) => {
 
 // Route for product detial
 app.get("/product_detail", (req, res) => {
-    res.render("product_details.ejs");
+  res.render("product_details.ejs");
+});
+
+app.get("/cart", (req, res) => {
+  res.render("cartPage.ejs");
 });
 
 app.post("/store-location", (req, res) => {
@@ -92,9 +142,8 @@ app.post("/store-location", (req, res) => {
 // });
 
 // กำหนด port สำหรับเซิร์ฟเวอร์
-const PORT = process.env.PORT || 3000;
+PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
-// ไม่ควรใช้ module.exports = connection; ใน server.js

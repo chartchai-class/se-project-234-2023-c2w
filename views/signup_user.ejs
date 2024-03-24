@@ -13,7 +13,7 @@
 <body>
   <div class="wrapper">
     <div class="form-container sign-up">
-      <form action="/signup" method="post" id="userSignupForm">
+      <form action="/user/signup" method="post" id="userSignupForm">
         <h2>User Sign Up</h2>
         <div class="form-group">
           <input type="text" required id="firstname" name="firstname" />
@@ -36,7 +36,7 @@
           <label for="confirmPassword">Confirm Password</label>
         </div>
         <input type="hidden" name="role" value="user" />
-        <button type="submit" class="btn">Sign Up</button>
+        <button type="submit" id="signup-btn" class="btn">Sign Up</button>
         <div class="link">
           <p>Already have an account?<a href="#" class="signin-link"> Sign In</a></p>
           <p>Back to<a href="/" class="home-link"> Home</a></p>
@@ -45,7 +45,7 @@
     </div>
     <!-- Sign In Form -->
     <div class="form-container sign-in">
-      <form action="/login" method="post">
+      <form action="/user/login" method="post">
         <h2>Login</h2>
         <div class="form-group">
           <input type="email" required id="loginEmail" name="email" />
@@ -58,7 +58,7 @@
         <div class="forgot-pass">
           <a href="#">Forgot password?</a>
         </div>
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" id="login-btn" class="btn">Login</button>
         <div class="link">
           <p>Don't have an account?<a href="#" class="signup-link"> Sign Up</a></p>
           <p>Back to<a href="/" class="home-link"> Home</a></p>
@@ -66,7 +66,7 @@
       </form>
     </div>
   </div>
-  <script src="/js/signup.js"></script>
+  <script src="/js/scriptAdmin.js"></script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -37,6 +37,8 @@ body {
     margin-left: -1.2rem;
 }
 
+
+
 /************************** product table styling *********************************/
 .details {
     position: relative;
@@ -140,6 +142,14 @@ body {
     .productSize {
         overflow-x: auto;
     }
+
+    .eachOrder {
+        overflow-x: auto;
+    }
+
+    .productDetail {
+        overflow-x: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -148,7 +158,9 @@ body {
     }
 }
 
-/* customer */
+
+
+/* ****************************   Customer  *************************** */
 .details .customer {
     position: relative;
     display: grid;
@@ -189,7 +201,9 @@ body {
     text-align: center;
 }
 
-/* All product */
+
+
+/* ****************************   All product  *************************** */
 .details .allProduct {
     position: relative;
     display: grid;
@@ -273,8 +287,66 @@ body {
     text-align: center;
 }
 
-/* Each order */
-.details .eachProduct {
+/* ****************************   All product popup  *************************** */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid var(--blue);
+    border-radius: 10px;
+    z-index: 10;
+    background-color: var(--cold);
+    width: 500px;
+    max-width: 80%;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--blue);
+    font-size: 1.25rem;
+    font-weight: bolder;
+    color: var(--green);
+}
+
+.modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--green);
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+
+/* ****************************   Each order  *************************** */
+.details .eachOrder {
     position: relative;
     display: grid;
     background: var(--white);
@@ -284,35 +356,162 @@ body {
     /* justify-content: space-between; */
 }
 
-.details .eachProduct table tr {
+.details .eachOrder table tr {
     color: var(--black);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.details .eachProduct table tr:last-child {
+.details .eachOrder table tr:last-child {
     border-bottom: none;
-
 }
 
-.details .eachProduct table tbody tr:hover {
+.details .eachOrder table tbody tr:hover {
     background: var(--green);
     color: var(--white);
 }
 
-.details .eachProduct table tr th {
+.details .eachOrder table tr th {
     padding: 10px;
 }
 
-.details .eachProduct table tr th:last-child {
+.details .eachOrder table tr th:last-child {
     text-align: end;
 }
 
-.details .eachProduct table tr th:nth-child(2) {
+.details .eachOrder table tr th:nth-child(2) {
     text-align: end;
 }
 
-.details .eachProduct table tr th:nth-child(2) {
+.details .eachOrder table tr th:nth-child(2) {
     text-align: center;
+}
+
+
+
+/* ****************************   History  *************************** */
+.details .history {
+    position: relative;
+    display: grid;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    /* justify-content: space-between; */
+}
+
+.details .history table tr {
+    color: var(--black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .history table tr:last-child {
+    border-bottom: none;
+
+}
+
+.details .history table tbody tr:hover {
+    background: var(--green);
+    color: var(--white);
+}
+
+.details .history table tr th {
+    padding: 10px;
+}
+
+.details .history table tr th:last-child {
+    text-align: end;
+}
+
+.details .history table tr th:nth-child(2) {
+    text-align: end;
+}
+
+.details .history table tr th:nth-child(2) {
+    text-align: center;
+}
+
+
+
+/* ****************************   Best Seller  *************************** */
+.details .bestSeller {
+    position: relative;
+    display: grid;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    /* justify-content: space-between; */
+}
+
+.details .bestSeller table tr {
+    color: var(--black);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .bestSeller table tr:last-child {
+    border-bottom: none;
+
+}
+
+.details .bestSeller table tbody tr:hover {
+    background: var(--green);
+    color: var(--white);
+}
+
+.details .bestSeller table tr th {
+    padding: 10px;
+}
+
+.details .bestSeller table tr th:last-child {
+    text-align: end;
+}
+
+.details .bestSeller table tr th:nth-child(2) {
+    text-align: end;
+}
+
+.details .bestSeller table tr th:nth-child(2) {
+    text-align: center;
+}
+
+
+
+/* *******************   Product detail   ********************* */
+.details .productDetail {
+    position: relative;
+    display: grid;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    /* justify-content: space-between; */
+}
+
+form {
+    padding: 20px;
+}
+
+.form-group {
+    padding: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 30px;
+    padding: 0 1rem;
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    border: .1rem solid var(--green);
+    font-size: 16px;
+    color: black;
+    background: transparent;
+}
+
+#newImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -372,6 +571,49 @@ body {
     background-color: #0a7059;
     box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
 }
+
+.update-btn {
+    background-color: #0d9276;
+    /* A deep green for high contrast */
+    color: white;
+    padding: 10px 25px;
+    border-radius: 0.25rem;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+.product-btn:hover,
+.product-btn:focus {
+    background-color: #0a7059;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
+}
+
+.product-btn {
+    background-color: #0d9276;
+    /* A deep green for high contrast */
+    color: white;
+    padding: 10px 25px;
+    border-radius: 0.25rem;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+.product-btn:hover,
+.product-btn:focus {
+    background-color: #0a7059;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
+}
+
 
 .my-3 {
     margin-top: 1rem;

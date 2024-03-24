@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Category</title>
-    <link rel="stylesheet" href="adminStyle.css" />
-    <script src="adminScript.js"></script>
-    <script src="admin.js"></script>
+    <link rel="stylesheet" href="css/adminStyle.css" />
+    <script src="js/adminScript.js"></script>
+    <script src="js/admin.js"></script>
   </head>
   <body>
     <div class="container">
@@ -31,10 +31,9 @@
 
             <!-- Trigger the modal with a button -->
             <button
+              data-modal-target="#modal"
               type="button"
               class="btn category-btn my-3"
-              data-toggle="modal"
-              data-target="#myModal"
             >
               Add Category
             </button>
@@ -42,6 +41,33 @@
           <!-- Modal for adding category -->
           <!-- Keep the modal as it is, since it's mainly HTML and bootstrap -->
           <!-- Your existing modal code here -->
+        </div>
+      </div>
+
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <div class="title">Category Detail</div>
+          <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="update-Items" enctype="multipart/form-data">
+            <div class="form-group">
+              <input type="text" class="form-control" id="category_id" hidden />
+            </div>
+            <div class="form-group">
+              <label for="name">Category Name:</label>
+              <input type="text" class="form-control" id="p_name" maxlength="30" required/>
+            </div>
+            <div class="form-group">
+              <button
+                type="button"
+                class="btn update-btn my-3"
+                onclick="updateItems()"
+              >
+                Add Category
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -71,5 +97,5 @@
         // After deletion, you might want to remove the row or refresh the table content
       }
     </script>
+    <script src="js/popupScript.js"></script>
   </body>
-</html>

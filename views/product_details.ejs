@@ -89,23 +89,20 @@
         <h5 class="card-title py-4">Adidas si</h5>
         <p class="card-text">Adidas si........</p>
       
-        <form id="product-form" class="product-form">
-          <div class="d-flex flex-row align-items-center my-3">
-            <input type="number" class="form-control me-3 quantity-input" value="1" min="1" />
-        
-            <select class="form-select select-size" required>
-              <option value="" disabled selected>Select size</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-            </select>
-          </div>
-        
-          <button type="submit" class="btn buy-btn my-3">Add To Cart</button>
-        </form>
-        
-      
+        <div class="d-flex flex-row align-items-center my-3">
+          <input type="number" class="form-control me-3 quantity-input" value="1" />
+          
+          <select class="form-select select-size">
+            <option>Select size</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+          </select>
+        </div>
+      <a href="/checkout">
+        <button class="btn buy-btn my-3" >Add To Cart</button>
+      </a>
         <h4 class="mt-5 mb-3">Product Details</h4>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis et

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category</title>
+    <link rel="stylesheet" href="css/adminStyle.css" />
+    <script src="js/adminScript.js"></script>
+    <script src="js/admin.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="details">
+          <div class="category">
+            <div class="cardHeader">
+              <h2>Category Items</h2>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">I.D.</th>
+                  <th class="text-center">Category Name</th>
+                  <th class="text-center">Action</th>
+                </tr>
+              </thead>
+
+              <tbody id="categoryTableBody"></tbody>
+            </table>
+
+            <!-- Trigger the modal with a button -->
+            <button
+              data-modal-target="#modal"
+              type="button"
+              class="btn category-btn my-3"
+            >
+              Add Category
+            </button>
+          </div>
+          <!-- Modal for adding category -->
+          <!-- Keep the modal as it is, since it's mainly HTML and bootstrap -->
+          <!-- Your existing modal code here -->
+        </div>
+      </div>
+
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <div class="title">Category Detail</div>
+          <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="update-Items" enctype="multipart/form-data">
+            <div class="form-group">
+              <input type="text" class="form-control" id="category_id" hidden />
+            </div>
+            <div class="form-group">
+              <label for="name">Category Name:</label>
+              <input type="text" class="form-control" id="p_name" maxlength="30" required/>
+            </div>
+            <div class="form-group">
+              <button
+                type="button"
+                class="btn update-btn my-3"
+                onclick="updateItems()"
+              >
+                Add Category
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Assuming you have an endpoint like '/api/categories' to fetch category data
+      fetch("/api/categories")
+        .then((response) => response.json())
+        .then((data) => {
+          const tableBody = document.getElementById("categoryTableBody");
+          data.forEach((item, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${index + 1}</td>
+              <td>${item.category_name}</td>
+              <td><button class="btn btn-danger" style="height:40px" onclick="categoryDelete('${
+                item.category_id
+              }')">Delete</button></td>
+            `;
+            tableBody.appendChild(row);
+          });
+        });
+
+      function categoryDelete(categoryId) {
+        // Implement the deletion logic here, possibly sending a request to the server
+        console.log("Delete category with ID:", categoryId);
+        // After deletion, you might want to remove the row or refresh the table content
+      }
+    </script>
+    <script src="js/popupScript.js"></script>
+  </body>
+</html>
