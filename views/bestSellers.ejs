@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BestSeller</title>
+    <link rel="stylesheet" href="adminStyle.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="details">
+          <div class="bestSeller">
+            <div class="cardHeader">
+              <h2>Top 10 product</h2>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center">I.D.</th>
+                  <th class="text-center">Product Image</th>
+                  <th class="text-center">Product Model</th>
+                  <th class="text-center">Product Name</th>
+                  <th class="text-center">Product Description</th>
+                  <th class="text-center">Category</th>
+                  <th class="text-center">Price</th>
+                </tr>
+              </thead>
+
+              <tbody id="productTableBody"></tbody>
+            </table>
+            <!-- Modal and other content remains unchanged -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/api/topProducts")
+          .then((response) => response.json())
+          .then((data) => {
+            const tableBody = document.getElementById("productTableBody");
+            data.forEach((item, index) => {
+              const row = document.createElement("tr");
+              row.innerHTML = `
+          <td class="text-center">${index + 1}</td>
+          <td class="text-center"><img height='100px' src='${
+            item.product_image
+          }'></td>
+          <td class="text-center">${item.product_name}</td>
+          <td class="text-center">${item.product_desc}</td>
+          <td class="text-center">${item.category_name}</td>
+          <td class="text-center">${item.price}</td>
+        `;
+              tableBody.appendChild(row);
+            });
+          })
+          .catch((error) => console.error("Error fetching data:", error));
+      });
+    </script>
+  </body>
+</html>

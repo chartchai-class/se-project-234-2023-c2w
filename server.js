@@ -1,53 +1,66 @@
-
 const express = require('express');
-const app = express();
-const db = require("./config/db");
-const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
+const session = require('express-session');
 require('dotenv').config();
 const productRoutes = require('./routes/productRoutes');
+const userRoutes = require('./routes/userRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const salesRoutes = require('./routes/salesRoutes');
+const bestSellersRoutes = require('./routes/bestSellerRoutes');
 
-app.use(express.json());
-const session = require('express-session');
-app.use('/api/products', productRoutes);
-const userRoutes = require('./routes/userRoutes.js');
-const adminRoutes = require('./routes/adminRoutes.js');
 
+const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+let PORT = process.env.PORT || 3000;
 
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
-
-
-// กำหนด routes ที่นี่
-app.use('/user', userRoutes);
-app.use('/admin', adminRoutes);
-
-app.get("/admin", (req, res) => {
-  res.render("signup_admin.ejs");
-});
+// Middlewares
 
 app.use(session({
   secret: 'your_secret_key',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  cookie: { secure: false } // set to true if using https
 }));
+
+// Static files
+app.use(express.static("public"));
+// Only if you have static files in views
+
+// View engine
+app.set("view engine", "ejs");
+
+// Routes
+app.use('/api/products', productRoutes);
+app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
+app.use('/api', salesRoutes);
+app.use('/api', bestSellersRoutes);
+
+
+
+
+app.get("/admin", (req, res) => {
+  res.render("signup_admin.ejs");
+});
 
 app.get("/admin", (req, res) => {
   res.render("dashboard.ejs");
 });
-app.use(express.static("views"));
+
 
 // Route for customers
 app.get("/customers", (req, res) => {
-    res.render("customers.ejs");
-  });
+  res.render("customers.ejs");
+});
 
 // Route for category
 app.get("/category", (req, res) => {
   res.render("categoryList.ejs");
+});
+
+app.get("/cart", (req, res) => {
+  res.render("cartPage");
 });
 
 // Route for All product
@@ -65,20 +78,14 @@ app.get("/logOut", (req, res) => {
   res.render("signup_admin.ejs");
 });
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard");
 });
 
-connection.connect(error => {
-  if (error) throw error;
-  console.log('Successfully connected to the database.');
+app.get("/productList/add/" , (req,res) => {
+  res.render("viewProductDetail")
 });
 
-// Set the view engine to EJS
-app.set("view engine", "ejs");
 
 
 app.get("/", (req, res) => {
@@ -88,9 +95,9 @@ app.use(express.static("views"));
 
 // Route for SignIn/SignUp
 app.get("/user", (req, res) => {
-    res.render("signup_user.ejs");
-  });
-  
+  res.render("signup_user.ejs");
+});
+
 // Route for shoe
 app.get("/product_1", (req, res) => {
   res.render("product_1_view.ejs");
@@ -108,7 +115,7 @@ app.get("/product_3", (req, res) => {
 
 // Route for product detial
 app.get("/product_detail", (req, res) => {
-    res.render("product_details.ejs");
+  res.render("product_details.ejs");
 });
 
 app.post("/store-location", (req, res) => {
@@ -131,7 +138,7 @@ app.post("/store-location", (req, res) => {
 // });
 
 // กำหนด port สำหรับเซิร์ฟเวอร์
-const PORT = process.env.PORT || 3000;
+PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
