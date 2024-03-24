@@ -4,38 +4,39 @@
 
 const express = require('express');
 const app = express();
-const db = require("./config/db");
-const bcrypt = require('bcrypt');
-const mysql = require('mysql2');
-require('dotenv').config();
+// const db = require("./config/db");
+// const bcrypt = require('bcrypt');
+// const mysql = require('mysql2');
+// require('dotenv').config();
 const productRoutes = require('./routes/productRoutes');
 
 app.use(express.json());
 app.use('/api/products', productRoutes);
 // const PORT_USER = process.env.PORT_USER || 3000;
 // const PORT_ADMIN = process.env.PORT_ADMIN || 8000;
-const userRoutes = require('./routes/userRoutes.js');
-const adminRoutes = require('./routes/adminRoutes.js');
+// const userRoutes = require('./routes/userRoutes.js');
+// const adminRoutes = require('./routes/adminRoutes.js');
+app.use(express.static("public"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // กำหนด routes ที่นี่
-app.use('/user', userRoutes);
-app.use('/admin', adminRoutes);
+// app.use('/user', userRoutes);
+// app.use('/admin', adminRoutes);
 
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME
-});
+// const connection = mysql.createConnection({
+//   host: process.env.DB_HOST,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PASS,
+//   database: process.env.DB_NAME
+// });
 
-connection.connect(error => {
-  if (error) throw error;
-  console.log('Successfully connected to the database.');
-});
+// connection.connect(error => {
+//   if (error) throw error;
+//   console.log('Successfully connected to the database.');
+// });
 
 // Set the view engine to EJS
 app.set("view engine", "ejs");
