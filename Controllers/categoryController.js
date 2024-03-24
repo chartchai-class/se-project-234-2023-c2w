@@ -1,17 +1,23 @@
 // categoryController.js
-const CategoryDB = require('./categoryModel');
+const CategoryDB = require('../models/categoryModel');
 
-const categoryController = {
-  getAllCategories: async (req, res) => {
-    try {
-      const categories = await CategoryDB.findAll();
-      res.json(categories);
-    } catch (error) {
-      res.status(500).json({ message: error.message });
-    }
-  },
-
-  // Add more controllers here as needed
+exports.getAllCategories = async (req, res) => {
+  try {
+    const categories = await CategoryDB.getAllCategories();
+    res.json(categories);
+  } catch (error) {
+    res.status(500).send('Server error');
+  }
 };
 
-module.exports = categoryController;
+exports.addCategory = async (req, res) => {
+  // Implement logic to add a category
+};
+
+exports.deleteCategory = async (req, res) => {
+  // Implement logic to delete a category
+};
+
+exports.editCategory = async (req, res) => {
+  // Implement logic to edit a category
+};

@@ -37,15 +37,21 @@ app.use('/admin', adminRoutes);
 app.use('/api', salesRoutes);
 app.use('/api', bestSellersRoutes);
 
-
-
-
 app.get("/admin", (req, res) => {
   res.render("signup_admin.ejs");
 });
 
 app.get("/admin", (req, res) => {
+  if (req.session && req.session.isAdmin) {
   res.render("dashboard.ejs");
+} else {
+  res.status(403).send('Access Denied'); // Or redirect to the login page
+  // res.render("signup_admin.ejs")
+}
+});
+
+app.get("/admin/dashboard", (req, res) => {
+  res.render("dashboard");
 });
 
 

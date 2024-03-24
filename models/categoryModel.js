@@ -35,33 +35,35 @@ const CategoryDB = new CategoryModel();
 
 module.exports = CategoryDB;
 
-// const BaseSQLModel = require('./BaseSQLModel');
+// ///////
+// const db = require('../config/db');
 
-// class ProductModel extends BaseSQLModel {
-//   constructor() {
-//     super('products'); // 'products' is the table name in the database
+// class CategoryModel {
+//   // Get all categories
+//   getAllCategories() {
+//     return db.query('SELECT * FROM categories');
 //   }
 
-//   // Find all products by category ID and sort by product sales count descending
-//   findAllByCategoryIdAndSort(categoryId) {
-//     const query = `SELECT * FROM ${this.tableName} WHERE category_id = ? ORDER BY product_sales_count DESC`;
-//     return this.executeQuery(query, [categoryId]);
+//   // Get a single category by ID
+//   getCategoryById(id) {
+//     return db.query('SELECT * FROM categories WHERE id = ?', [id]);
 //   }
 
-//   // Add a new category
-//   addProductToCategory(productData) {
-//     return this.create(productData);
+//   // Create a new category
+//   createCategory(name) {
+//     return db.query('INSERT INTO categories (name) VALUES (?)', [name]);
 //   }
 
-//   // Edit an existing product
-//   editProduct(productId, productData) {
-//     return this.update(productId, productData);
+//   // Update a category by ID
+//   updateCategory(id, name) {
+//     return db.query('UPDATE categories SET name = ? WHERE id = ?', [name, id]);
 //   }
 
-//   // Delete a product
-//   deleteProduct(productId) {
-//     return this.delete(productId);
+//   // Delete a category by ID
+//   deleteCategory(id) {
+//     return db.query('DELETE FROM categories WHERE id = ?', [id]);
 //   }
 // }
 
-// module.exports = new ProductModel();
+// module.exports = new CategoryModel();
+
