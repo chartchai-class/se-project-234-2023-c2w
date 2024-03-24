@@ -60,7 +60,7 @@ app.get("/category", (req, res) => {
 });
 
 app.get("/cart", (req, res) => {
-  res.render("cartPage");
+  res.render("cartPage.ejs");
 });
 
 // Route for All product
@@ -89,7 +89,7 @@ app.get("/productList/add/" , (req,res) => {
 
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  res.render("dashboard.ejs");
 });
 app.use(express.static("views"));
 
@@ -116,6 +116,10 @@ app.get("/product_3", (req, res) => {
 // Route for product detial
 app.get("/product_detail", (req, res) => {
   res.render("product_details.ejs");
+});
+
+app.get("/cart", (req, res) => {
+  res.render("cartPage.ejs");
 });
 
 app.post("/store-location", (req, res) => {
