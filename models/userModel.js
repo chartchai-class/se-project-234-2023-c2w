@@ -1,4 +1,4 @@
-const BaseSQLModel = require("./BaseSQLModel");
+const BaseSQLModel = require("./baseSQLModel");
 
 
 class UserModel extends BaseSQLModel {
