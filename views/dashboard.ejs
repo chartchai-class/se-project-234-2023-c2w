@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | C2W</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/dashboardstyle.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <div class="container">
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="/">
+              <span class="icon"><ion-icon name="key"></ion-icon></span>
+              <span class="title">C2W</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/">
+              <span class="icon"><ion-icon name="home"></ion-icon></span>
+              <span class="title">Dashboard</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/customers"> <!-- views/customers.ejs-->
+              <span class="icon"><ion-icon name="people"></ion-icon></span>
+              <span class="title">Customers</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/category">
+              <span class="icon"><ion-icon name="grid"></ion-icon></span>
+              <span class="title">Category</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/productList">
+              <span class="icon"><ion-icon name="bag-handle"></ion-icon></span>
+              <span class="title">Products</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/salesHistory">
+              <span class="icon"><ion-icon name="time"></ion-icon></span>
+              <span class="title">History</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/logOut">
+              <span class="icon"><ion-icon name="log-out"></ion-icon></span>
+              <span class="title">Sign out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- main -->
+      <div class="main">
+        <div class="topbar">
+          <div class="toggle">
+            <ion-icon name="menu"></ion-icon>
+          </div>
+
+          <div class="search">
+            <label for="">
+              <input type="text" placeholder="Search" />
+              <ion-icon name="search"></ion-icon>
+            </label>
+          </div>
+
+          <div class="user">
+            <ion-icon name="person"></ion-icon>
+          </div>
+        </div>
+
+        <!-- card -->
+        <div class="cardBox">
+          <div class="card">
+            <div>
+              <div class="numbers">1</div>
+              <div class="topProduct">Top 10 products</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="analytics"></ion-icon>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <div class="numbers">10</div>
+              <div class="totalProduct">Total product</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="layers"></ion-icon>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <div class="numbers">1</div>
+              <div class="totalCategory">Total categories</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="folder-open"></ion-icon>
+            </div>
+          </div>
+
+          <div class="card">
+            <div>
+              <div class="numbers">1</div>
+              <div class="totalOrder">Total orders</div>
+            </div>
+            <div class="iconBx">
+              <ion-icon name="list"></ion-icon>
+            </div>
+          </div>
+        </div>
+
+        <!-- order details list -->
+        <div class="details">
+          <div class="recentOrders">
+            <div class="cardHeader">
+              <h2>Recent Orders</h2>
+              <a href="#" class="btn">View all</a>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td>Price</td>
+                  
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>neh neh</td>
+                  <td>$29</td>
+                </tr>
+
+                <tr>
+                  <td>quak quak quak</td>
+                  <td>$100</td>
+                </tr>
+
+                <tr>
+                  <td>squeez</td>
+                  <td>$32</td>
+                </tr>
+
+                <tr>
+                  <td>ehu ehu ahh ahh</td>
+                  <td>$45</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- script -->
+    <script src="/js/dashboardMenu.js"></script>
+
+    <!-- icon -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

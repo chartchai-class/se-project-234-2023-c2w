@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in & Sign up</title>
+    <link rel="stylesheet" href="css/loginadminstyle.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Admin Signup Form -->
+    <div class="form-container sign-up">
+        <form action="/admin/signup" method="post" id="adminSignupForm">
+          <h2>Admin Sign Up</h2>
+          <!-- Admin signup form fields -->
+          <!-- Assuming same fields as user for simplicity, adjust as necessary -->
+          <div class="form-group">
+            <input type="text" id="adminFirstname" name="firstname" required>
+            <label for="adminFirstname">Firstname</label>
+          </div>
+          <div class="form-group">
+            <input type="text" id="adminLastname" name="lastname" required>
+            <label for="adminLastname">Lastname</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="adminEmail" name="email" required>
+            <label for="adminEmail">Email</label>
+          </div>
+          <div class="form-group">
+            <input type="password" id="adminPassword" name="password" required>
+            <label for="adminPassword">Password</label>
+          </div>
+          <div class="form-group">
+            <input type="password" id="adminConfirmPassword" name="confirmPassword" required>
+            <label for="adminConfirmPassword">Confirm Password</label>
+          </div>
+                <input type="hidden" name="role" value="admin" />
+        <button type="submit" class="btn">Sign Up</button>
+                <div class="link">
+                    <p>You already have an admin account?<a href="#" class="signin-link"> sign in</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form action="/admin/signin" method="post">
+                <h2>Admin login</h2>
+                <div class="form-group">
+                    <input type="email"  id="email" name="email" required >
+                    <i class="fas fa-at"></i>
+                    <label for="">employe id</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="pass"  name="password" required>
+                    <i class="fas fa-lock"></i>
+                    <label for="">password</label>
+                </div>
+                    <button type="submit" class="btn login-btn my-3" id="submit" >login</button>
+                <div class="link">
+                    <p>Don't have an admin account?<a href="#" class="signup-link"> sign up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="/js/scriptAdmin.js"></script>
+</body>
+</html>

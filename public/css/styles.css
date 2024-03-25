@@ -1,13 +1,52 @@
-/* html {
-  background-color: #E4E9FD;
-  background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
-  min-height: 1000px;
-  font-family: 'helvetica neue';
-} */
+/* HAMBURGERMENU DECORATION
+-------------------------------------------------- */
 
+.navbar-toggler {
+  border: none;
+  background-color: transparent;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='rgb(0,128,0)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+}
+.nav-icons a {
+  padding: 0 15px; /* เพิ่มระยะห่างระหว่างไอคอน */
+}
+
+
+
+/* DROPDOWN ITEM DECORATION
+-------------------------------------------------- */
+.navbar{
+  padding-top: 0px; /* ปรับค่านี้ตามความสูงของ navbar ของคุณ */
+
+}
+/* ปรับแต่ง dropdown menu */
+.navbar .dropdown-menu {
+  background-color: #ffffff; 
+  border: none; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.navbar .dropdown-item {
+  color: #333333; 
+  transition: background-color 0.2s ease; 
+}
+
+.navbar .dropdown-item:hover {
+  background-color: #f8f9fa; 
+}
+
+
+
+/* PRODUCT VIEW SECTION
+-------------------------------------------------- */
 #product1 {
   text-align: center;
-  
 }
 .product-container {
   display: flex;
@@ -17,20 +56,12 @@
   /* padding: 20px; */
 }
 #product1 .product_pro {
-  /* width: 23%;
-  min-width: 250px;
-  padding: 10px 12px;
-  border: 1px solid #cce7d0;
-  border-radius: 20px;
-  cursor: pointer;
-  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
 
-  margin-left: 25px; Adjust this value to increase or decrease the space */
   width: calc(25% - 40px); /* Adjust width for spacing */
   margin-bottom: 20px;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   /* padding: 16px; */
   text-align: center;
 }
@@ -39,8 +70,332 @@
   width: 100%;
   border-radius: 20px;
 }
-#product1 .product_pro .des{
-  background-color: #BBE2EC; /* This sets the background color */
-  /* padding: 8px; /* Add padding if needed */
-  /* border-radius: 4px; Optional, if you want rounded corners */ 
+#product1 .product_pro .des {
+  background-color: #bbe2ec; 
+
+}
+
+#product1 .product-container {
+  display: flex;
+}
+
+#product1 .product_pro .des {
+
+  background-color: #bbe2ec;
+
+}
+
+#product1 .product_pro .des #product1 .product_pro:hover {
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+No newline at end of file
+  /*} */
+  /* General resets */
+  * {
+  box-sizing: border-box;
+}
+
+/* Section styling */
+.section-p1 {
+  padding: 2rem 0; /* Add padding to the section */
+}
+
+/* Container */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Rows and columns */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+/* Card styling */
+.card {
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image styling */
+.card-img-top {
+  height: 250px; /* Fixed height for your images */
+  object-fit: cover; /* Cover the space without stretching */
+  object-position: center; /* Center the image within the element */
+}
+
+/* Card body styling */
+/* .card-body {
+  padding: 1rem; 
+  background: #bbe2ec; 
+  text-align: center; 
+}
+.card.product-card {
+  position: relative;
+}
+
+.card-body .price {
+  font-size: 1.5em; 
+  color: #000000; 
+} */
+.card-body {
+  padding: 1rem; /* ระยะห่างภายใน card body */
+  background: #bbe2ec; /* สีพื้นหลังสำหรับ card body */
+  text-align: left; /* จัดข้อความให้อยู่ตรงกลางของ card body */
+}
+
+.card.product-card {
+  position: relative; /* ตำแหน่งเป็นสัมพันธ์ */
+  /* เพิ่ม style อื่นๆ ตามความต้องการ */
+}
+
+.card-body .price {
+  font-size: 1.5em; /* ขนาดของตัวอักษรสำหรับราคา */
+  color: #31363F; /* สีของตัวอักษรสำหรับราคา */
+  /* เพิ่ม style อื่นๆ ตามความต้องการ */
+  margin-top: 1rem; /* ระยะห่างจากข้อความด้านบน */
+}
+
+
+.card-title {
+  margin-bottom: 0.5rem; /* Space below the title */
+}
+
+.card-text {
+  margin-bottom: 1.5rem; /* Space below the description */
+}
+
+/* Price tag styling */
+.product-price {
+  color: #ff4500; /* Orange color for the price */
+  font-size: 1.5rem; /* Larger font size for price */
+  font-weight: bold; /* Bold font weight for price */
+  display: inline-block; /* Make the price inline */
+  margin-bottom: 1rem; /* Space below the price tag */
+}
+
+/* Button styling */
+.btn-primary {
+  border-radius: 0.25rem; /* Rounded corners for button */
+  padding: 0.375rem 0.75rem; /* Padding inside the button */
+}
+
+/* FOOTER STYLE
+-------------------------------------------------- */
+.bd-footer {
+  background-color: #f8f9fa; /* Change the background color as needed */
+  color: #212529; /* Change the text color as needed */
+}
+
+.bd-footer a {
+  color: #000; /* Change the link color as needed */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.bd-footer a:hover {
+  text-decoration: underline; /* Add underline on hover for links */
+}
+
+.bd-footer h5 {
+  margin-bottom: 20px; /* Space below the headings */
+}
+
+.bd-footer ul {
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+}
+
+.bd-footer ul li {
+  margin-bottom: 10px; /* Space between list items */
+}
+
+.bd-footer .container {
+  max-width: 1140px; /* Adjust the container width as needed */
+}
+
+@media (max-width: 768px) {
+  .bd-footer .col-lg-2 {
+    max-width: 100%; /* Stack columns on smaller screens */
+    flex: 0 0 100%;
+    margin-bottom: 1rem; /* Space between stacked columns */
+  }
+}
+
+/* CUSTOMIZE THE CAROUSEL FOR PRODUCT DETAILS
+-------------------------------------------------- */
+
+.carousel-item {
+  height: 500px; /* กำหนดความสูงของสไลด์ */
+}
+
+.carousel-item img {
+  width: 100%; /* กำหนดความกว้างให้เต็มคอนเทนเนอร์ */
+  height: 500px; /* กำหนดความสูงให้ตรงกับคอนเทนเนอร์ */
+  object-fit: cover; /* ให้รูปภาพครอบคลุมพื้นที่โดยไม่เสียสัดส่วน */
+}
+/* Styling for select element */
+/* Apply a modern font-family */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card title with a larger font-size for emphasis */
+.card-title {
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+  color: #333; /* Dark grey for better readability */
+}
+
+/* Card text for description with a lighter color for contrast */
+.card-text {
+  color: #555; /* Lighter grey to differentiate from the title */
+  font-size: 1rem;
+}
+
+/* Style the quantity input */
+.quantity-input {
+  background-color: #bbe2ec;
+  max-width: 80px;
+  border-radius: 0.25rem;
+  border: 1px solid #ced4da;
+  padding: 0.375rem 0.75rem; /* Bootstrap's default padding */
+}
+
+/* Style the size select dropdown */
+.select-size {
+  background-color: #bbe2ec;
+  flex-grow: 1;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem; /* Consistent with input */
+  -webkit-appearance: none; /* Removes default styling */
+  -moz-appearance: none; /* Removes default styling */
+  appearance: none; /* Removes default styling */
+  border: 1px solid #ced4da;
+}
+
+/* Add to Cart button with a standout color */
+.buy-btn {
+  background-color: #0d9276; /* A deep green for high contrast */
+  color: white;
+  padding: 10px 25px;
+  border-radius: 0.25rem;
+  border: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+}
+
+.buy-btn:hover,
+.buy-btn:focus {
+  background-color: #0a7059;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
+}
+
+/* Product Details heading with more emphasis */
+h4 {
+  font-size: 1.25rem;
+  color: #333;
+  font-weight: bold;
+  margin-top: 2rem; /* Spacing above the title */
+}
+
+/* Product Details text to be readable and comfortable for the eye */
+p {
+  color: #666; /* Grey color for the product description */
+  line-height: 1.6; /* Increase line-height for readability */
+}
+
+/* Extra styling to handle spacing and alignment */
+.mt-5.pt-5 {
+  margin-top: 3rem !important; /* More space at the top */
+  padding-top: 3rem !important; /* More space at the top */
+}
+
+.my-3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.card.product-card-link {
+  text-decoration: none; /* ลบเส้นใต้ของ link */
+  color: inherit; /* Link จะใช้สีข้อความเดียวกับที่ถูกสืบทอดมา */
+}
+
+.card.product-card-link:hover,
+.card.product-card-link:focus {
+  text-decoration: none; /* ลบเส้นใต้เมื่อ hover หรือ focus */
+}
+
+/* ตั้งค่าเพิ่มเติมสำหรับเมื่อผู้ใช้ hover ไปที่ card */
+.card.product-card-link:hover .card.product-card,
+.card.product-card-link:focus .card.product-card {
+  /* เพิ่มเอฟเฟกต์เมื่อ hover หรือ focus เช่นเปลี่ยนสีพื้นหลัง, เส้นขอบ ฯลฯ */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ตัวอย่างเอฟเฟกต์เมื่อ hover */
+}
+
+/* BASE PAGINATION STYLING
+-------------------------------------------------- */
+
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination .page-item {
+  margin: 0 3px;
+}
+
+.pagination .page-link {
+  border-radius: 5px;
+  padding: 8px 12px;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out;
+}
+
+/* Hover and active states with subtle color shifts */
+.pagination .page-link:hover,
+.pagination .page-link:focus {
+  z-index: 2;
+  color: #0056b3;
+  background-color: #bbe2ec;
+  border-color: #dee2e6;
+  text-decoration: none;
+}
+
+.pagination .page-link:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+
+/* Current page indicator */
+.pagination .page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Disabled links styling */
+.pagination .page-item.disabled .page-link {
+  color: #bbe2ec;
+  pointer-events: none;
+  background-color: #fff;
+  border-color: #dee2e6;
 }
