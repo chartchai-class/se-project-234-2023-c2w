@@ -31,8 +31,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./frontend
-          file: ./frontend/Dockerfile
+          context: .
           push: true
           tags: worabrave/c2w-deploy-dev:latest
       -
@@ -43,8 +42,8 @@ jobs:
           username: ${{secrets.HOST_USER_NAME}}
           key: ${{secrets.HOST_SSH_PRIVATE_KEY}}
           port: 22
-          source: "docker-compose.yml"
-          target: "/home/ubuntu/frontend"
+          source: "docker-compose-dev.yml"
+          target: "/home/ubuntu/frontend-dev"
       -
         name: docker compose
         uses: appleboy/ssh-action@v0.1.10
@@ -54,9 +53,9 @@ jobs:
           key: ${{secrets.HOST_SSH_PRIVATE_KEY}}
           port: 22
           script: |
-            cd /home/ubuntu/frontend
+            cd /home/ubuntu/frontend-dev
             echo ${{ secrets.DOCKER_HUB_TOKEN}} | docker login --username ${{ secrets.DOCKER_HUB_USERNAME}} --password-stdin
-            docker compose -f docker-compose.yml down
-            docker compose -f docker-compose.yml pull
-            docker compose -f docker-compose.yml up -d
-            rm -rf /home/ubuntu/frontend
+            docker compose -f docker-compose-dev.yml down
+            docker compose -f docker-compose-dev.yml pull
+            docker compose -f docker-compose-dev.yml up -d
+            rm -rf /home/ubuntu/frontend-dev
