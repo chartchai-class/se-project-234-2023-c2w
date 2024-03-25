@@ -14,11 +14,6 @@ router.post('/login', async (req, res) => {
   await Authen.userLogin(req, res, email, password);
 });
 
-// // Add to Wishlist route
-// router.post('/addwishlist', Authen.authentication, async (req, res) => {
-//   // Further implementation goes here
-// });
-
 // Logout route
 router.get('/logout', async (req, res) => {
   req.session.destroy();

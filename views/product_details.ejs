@@ -102,11 +102,12 @@
             </select>
           </div>
         
-          <a href="/checkout">
-            <button class="btn buy-btn my-3" >Add To Cart</button>
-          </a>        </form>
+          <a class="nav-link" href="/cart">
+            <button type="submit" class="btn buy-btn my-3">Add To Cart</button>
+          </a>        
+        </form>
         
-      
+        
         <h4 class="mt-5 mb-3">Product Details</h4>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis et
@@ -118,14 +119,21 @@
       
       
     </div>
-
+    
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
     ></script>
-
+    
   </body>
+  <script>
+    document.getElementById('product-form').onsubmit = function(e) {
+      e.preventDefault();  // Prevent the default form submission
+      // Add your validation or form submission logic here
+      window.location.href = '/cart';  // Redirect to the checkout page
+    };
+  </script>
   <footer><%- include('partials/footer'); %></footer>
 
 </html>

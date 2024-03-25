@@ -1,5 +1,4 @@
 const UserDB = require("../models/userModel");
-const bcrypt = require('bcrypt');
 
 // User login function
 exports.userLogin = async function (req, res) {
@@ -10,8 +9,8 @@ exports.userLogin = async function (req, res) {
     const oldUser = await UserDB.getUserByEmail(email);
 
     if (oldUser) {
-      // Check if the provided password matches the stored password
-      const isMatch = await bcrypt.compare(password, oldUser.password);
+      // Check if the provided password matches the stored (unhashed) password
+      const isMatch = (password === oldUser.password);
 
       if (isMatch) {
         // Password is correct
@@ -44,8 +43,8 @@ exports.adminLogin = async function (req, res) {
     const oldUser = await UserDB.getUserByEmail(email);
 
     if (oldUser) {
-      // Check if the provided password matches the stored password
-      const isMatch = await bcrypt.compare(password, oldUser.password);
+      // Check if the provided password matches the stored (unhashed) password
+      const isMatch = (password === oldUser.password);
 
       if (isMatch) {
         // Password is correct

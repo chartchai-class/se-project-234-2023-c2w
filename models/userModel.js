@@ -1,15 +1,11 @@
 const BaseSQLModel = require("./BaseSQLModel");
-const bcrypt = require("bcrypt");
+
 
 class UserModel extends BaseSQLModel {
   constructor() {
     super("users");
   }
 
-  // Hash the password
-  async hashPassword(password) {
-    return bcrypt.hash(password, 10);
-  }
 
   // Create a new user with hashed password
   async createUser(userData) {

@@ -6,7 +6,7 @@ const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const salesRoutes = require('./routes/salesRoutes');
-const bestSellersRoutes = require('./routes/bestSellerRoutes');
+
 
 
 const app = express();
@@ -35,7 +35,7 @@ app.use('/api/products', productRoutes);
 app.use('/user', userRoutes);
 app.use('/admin', adminRoutes);
 app.use('/api', salesRoutes);
-app.use('/api', bestSellersRoutes);
+
 
 
 
@@ -44,7 +44,21 @@ app.get("/admin", (req, res) => {
   res.render("signup_admin.ejs");
 });
 
-app.get("/admin", (req, res) => {
+// สำหรับการสมัครสมาชิก (Sign up)
+app.post('/admin/signup', async (req, res) => {
+  // จัดการข้อมูลการสมัครสมาชิก
+  // ถ้าสำเร็จ ให้เปลี่ยนเส้นทางไปยังหน้า dashboard
+  res.redirect('/admin/dashboard');
+});
+
+// สำหรับการล็อกอิน (Sign in)
+app.post('/admin/signin', async (req, res) => {
+  // จัดการข้อมูลการล็อกอิน
+  // ถ้าสำเร็จ ให้เปลี่ยนเส้นทางไปยังหน้า dashboard
+  res.redirect('/admin/dashboard');
+});
+
+app.get("/admin/dashboard", (req, res) => {
   res.render("dashboard.ejs");
 });
 
@@ -87,15 +101,33 @@ app.get("/productList/add/" , (req,res) => {
 });
 
 
-
-app.get("/", (req, res) => {
-  res.render("dashboard.ejs");
-});
 app.use(express.static("views"));
 
 // Route for SignIn/SignUp
 app.get("/user", (req, res) => {
   res.render("signup_user.ejs");
+});
+
+// สำหรับการสมัครสมาชิก (Sign up)
+app.post('/user/signup', async (req, res) => {
+  // จัดการข้อมูลการสมัครสมาชิก
+  // ถ้าสำเร็จ ให้เปลี่ยนเส้นทางไปยังหน้า homepage
+  res.redirect('/user/homepage');
+});
+
+// สำหรับการล็อกอิน (Sign in)
+app.post('/user/signin', async (req, res) => {
+  // จัดการข้อมูลการล็อกอิน
+  // ถ้าสำเร็จ ให้เปลี่ยนเส้นทางไปยังหน้า homepage
+  res.redirect('/user/homepage');
+});
+
+app.get("/user/homepage", (req, res) => {
+  res.render("Homepage.ejs");
+});
+
+app.get("/", (req, res) => {
+  res.render("Homepage.ejs");
 });
 
 // Route for shoe
@@ -127,19 +159,6 @@ app.post("/store-location", (req, res) => {
   res.render("storeLocation.ejs");
 });
 
-// // ตัวอย่างการใช้ app.post ใน server.js หรือ route file
-// app.post('/signup_admin', async (req, res) => {
-//   const { firstname, lastname, email, password } = req.body;
-//   const hashedPassword = await bcrypt.hash(password, 10);
-//   const newUser = { firstname, lastname, email, password: hashedPassword, role: 'admin' };
-//   connection.query('INSERT INTO users SET ?', newUser, (error, results) => {
-//     if (error) {
-//       console.error(error);
-//       return res.status(500).send('Server error');
-//     }
-//     res.redirect('/success');
-//   });
-// });
 
 // กำหนด port สำหรับเซิร์ฟเวอร์
 PORT = process.env.PORT || 3000;

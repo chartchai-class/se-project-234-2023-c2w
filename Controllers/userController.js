@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+
 const connection = require('../config/db.js');
 
 // Define userSignup function
@@ -13,11 +13,8 @@ async function userSignup(req, res) {
     console.log(password);
     // Generate salt rounds
     const saltRounds = 10;
-    
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    const newUser = { firstname, lastname, email, password: hashedPassword, role: 'user' };
+    const newUser = { firstname, lastname, email, password, role: 'user' };
     
     // Insert new user into the database
     connection.query('INSERT INTO users SET ?', newUser, (error, results) => {
