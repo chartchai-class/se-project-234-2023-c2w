@@ -5,6 +5,12 @@ class ProductModel extends BaseSQLModel {
     super('products'); // 'products' is the table name in the database
   }
 
+  // Fetch all rows from the table
+  findAllProduct(ProductId) {
+    const ProductId = `SELECT * FROM ${this.tableName}`;
+    return this.executeQuery(ProductId);
+  }
+  
   // Find all products by category ID and sort by product sales count descending
   findAllByCategoryIdAndSort(categoryId) {
     const query = `SELECT * FROM ${this.tableName} WHERE category_id = ? ORDER BY product_sales_count DESC`;

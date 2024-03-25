@@ -1,0 +1,6 @@
+version: '3.3'
+services:
+  frontend:
+    image: worabrave/c2w-deploy-dev
+    ports:
+      - "8081:3000"
