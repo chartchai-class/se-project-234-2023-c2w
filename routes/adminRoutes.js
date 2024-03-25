@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const adminController = require('../controllers/adminController');
-const authController = require('../controllers/authController');
+const adminController = require('../Controllers/adminController');
+const authController = require('../Controllers/authController');
 
 // Endpoint for admin signup
 router.post('/signup', adminController.adminSignup);

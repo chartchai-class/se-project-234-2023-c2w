@@ -1,7 +1,7 @@
 // homeRoutes.js
 const express = require('express');
 const router = express.Router();
-const Authen = require('../controllers/authen');
+const Authen = require('../Controllers/authen');
 
 // Homepage route
 router.get('/', (req, res) => {

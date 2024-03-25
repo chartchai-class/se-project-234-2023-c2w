@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const categoryController = require('../controllers/categoryController');
+const categoryController = require('../Controllers/categoryController');
 
 // Get all categories sorted by category name
 router.get('/categories', categoryController.getAllCategories);

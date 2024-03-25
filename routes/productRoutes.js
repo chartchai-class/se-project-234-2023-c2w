@@ -18,7 +18,7 @@
 
 const express = require('express');
 const router = express.Router();
-const productController = require('../controllers/productController');
+const productController = require('../Controllers/productController');
 
 // ตรวจสอบว่า productController.addProduct มีอยู่จริง
 router.post('/add', productController.addProduct);
